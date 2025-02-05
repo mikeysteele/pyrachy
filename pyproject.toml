@@ -1,0 +1,40 @@
+[project]
+name = "pyrachy"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "toml",
+    "pyyaml"
+]
+
+[dependency-groups]
+dev = [
+  "pytest",
+  "hatchling",
+  "pylint",
+  "pyright",
+  "commitizen",
+  "black",
+  "taskipy"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include=["src"]
+
+[tool.commitizen]
+name="cz_conventional_commits"
+tag_format="$version"
+version_scheme="semver"
+version_provider="pep621"
+
+[tool.taskipy.tasks]
+test="pytest"
+lint="pylint src/."
+format="black src/."
+typecheck="pyright src/."
