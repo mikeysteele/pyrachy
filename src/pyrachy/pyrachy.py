@@ -23,9 +23,11 @@ class Pyrachy:
                 base[key] = value
         return base
 
-    def get(self, key: Optional[str] = None, default: Optional[str] = None):
+    def get(
+        self, key: Optional[str] = None, default: Optional[str] = None
+    ) -> Any | None:
         """Retrieve a nested key using dot notation."""
-        d = self.__config
+        d: Any = self.__config
         if key is not None:
             keys = key.split(".")
             for k in keys:

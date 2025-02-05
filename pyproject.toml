@@ -1,6 +1,6 @@
 [project]
 name = "pyrachy"
-version = "0.1.0"
+version = "0.1.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -12,7 +12,6 @@ dependencies = [
 [dependency-groups]
 dev = [
   "pytest",
-  "hatchling",
   "pylint",
   "pyright",
   "commitizen",
@@ -24,8 +23,10 @@ dev = [
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+
+
 [tool.hatch.build]
-include=["src"]
+packages = ["src/pyrachy"]
 
 [tool.commitizen]
 name="cz_conventional_commits"
@@ -35,6 +36,6 @@ version_provider="pep621"
 
 [tool.taskipy.tasks]
 test="pytest"
-lint="pylint src/."
-format="black src/."
-typecheck="pyright src/."
+lint="pylint src/pyrachy/."
+format="black src/pyrachy/."
+typecheck="pyright src/pyrachy/."
