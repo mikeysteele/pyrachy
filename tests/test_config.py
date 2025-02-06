@@ -49,7 +49,7 @@ def test_dict_loader_with_arg():
 
 # Test dictLoader getting single arg
 def test_dict_loader_with_arg_with_dot():
-    loader = dictLoader({"db": {"host": "localhost", "port": "5432"}})
+    loader = DictLoader({"db": {"host": "localhost", "port": "5432"}})
     config = Pyrachy([loader])
     loaded_config = config.get("db.host")
 
