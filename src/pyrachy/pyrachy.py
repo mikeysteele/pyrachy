@@ -1,11 +1,11 @@
-from typing import Any, Dict, Optional
+from typing import Any, Optional, Union
 from .loaders.base_loader import BaseLoader
 
 
 class Pyrachy:
     def __init__(self, loaders: list[BaseLoader]):
         self.loaders = loaders
-        merged_data: Dict[str, Any] = {}
+        merged_data: dict[str, Any] = {}
 
         for loader in loaders:  # Preserve priority
             if not isinstance(loader, BaseLoader):  # type: ignore
@@ -14,7 +14,7 @@ class Pyrachy:
 
         self.__config = merged_data  # Store as a nested dict
 
-    def _merge_dicts(self, base: Dict[str, Any], new: Dict[str, Any]) -> Dict[str, Any]:
+    def _merge_dicts(self, base: dict[str, Any], new: dict[str, Any]) -> dict[str, Any]:
         """Recursively merge two dictionaries (new overrides base)."""
         for key, value in new.items():
             if isinstance(value, dict) and isinstance(base.get(key), dict):
@@ -25,7 +25,7 @@ class Pyrachy:
 
     def get(
         self, key: Optional[str] = None, default: Optional[str] = None
-    ) -> Any | None:
+    ) -> Union[Any, None]:
         """Retrieve a nested key using dot notation."""
         d: Any = self.__config
         if key is not None:

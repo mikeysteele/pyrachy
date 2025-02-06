@@ -1,10 +1,10 @@
-from pyrachy import Pyrachy, DictLoader, EnvLoader, ArgvLoader, FileLoader
+from pyrachy import Pyrachy, dictLoader, EnvLoader, ArgvLoader, FileLoader
 
 
 def main():
     config = Pyrachy(
         [
-            DictLoader({"name": "Me", "db": {"host": 123, "port": 234}}),
+            dictLoader({"name": "Me", "db": {"host": 123, "port": 234}}),
             EnvLoader("PY_", "__"),
             ArgvLoader(separator="-"),
             FileLoader(["pyproject.toml"]),

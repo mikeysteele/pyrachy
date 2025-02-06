@@ -1,5 +1,5 @@
 import sys
-from typing import List, Dict, Any, Optional
+from typing import Any, Optional
 from .base_loader import BaseLoader
 
 
@@ -8,20 +8,20 @@ class ArgvLoader(BaseLoader):
         self,
         prefix: str = "--",
         separator: Optional[str] = None,
-        allowed_args: Optional[List[str]] = None,
+        allowed_args: Optional[list[str]] = None,
     ):
         """
         Args:
-            allowed_args (List[str], optional): List of argument names to extract (e.g., ["database.host", "debug"]).
+            allowed_args (list[str], optional): list of argument names to extract (e.g., ["database.host", "debug"]).
             prefix (str, optional): Prefix for arguments (e.g., "--config-key"). Defaults to "--".
         """
         self.allowed_args = allowed_args
         self.prefix = prefix
         self.separator = separator
 
-    def load(self) -> Dict[str, Any]:
+    def load(self) -> dict[str, Any]:
 
-        parsed_args: Dict[str, Any] = {}
+        parsed_args: dict[str, Any] = {}
         argv = sys.argv[1:]  # Get actual shell arguments
 
         for arg in argv:

@@ -2,7 +2,7 @@ import pytest
 import sys
 from unittest.mock import patch, mock_open
 
-from pyrachy import Pyrachy, ArgvLoader, DictLoader, EnvLoader, FileLoader
+from pyrachy import Pyrachy, ArgvLoader, dictLoader, EnvLoader, FileLoader
 
 # Test Config class and loaders
 
@@ -29,27 +29,27 @@ def mock_toml_file():
         yield file_contents
 
 
-# Test DictLoader
+# Test dictLoader
 def test_dict_loader():
-    loader = DictLoader({"db": {"host": "localhost", "port": "5432"}})
+    loader = dictLoader({"db": {"host": "localhost", "port": "5432"}})
     config = Pyrachy([loader])
     loaded_config = config.get()
 
     assert loaded_config == {"db": {"host": "localhost", "port": "5432"}}
 
 
-# Test DictLoader getting single arg
+# Test dictLoader getting single arg
 def test_dict_loader_with_arg():
-    loader = DictLoader({"db": {"host": "localhost", "port": "5432"}})
+    loader = dictLoader({"db": {"host": "localhost", "port": "5432"}})
     config = Pyrachy([loader])
     loaded_config = config.get("db")
 
     assert loaded_config == {"host": "localhost", "port": "5432"}
 
 
-# Test DictLoader getting single arg
+# Test dictLoader getting single arg
 def test_dict_loader_with_arg_with_dot():
-    loader = DictLoader({"db": {"host": "localhost", "port": "5432"}})
+    loader = dictLoader({"db": {"host": "localhost", "port": "5432"}})
     config = Pyrachy([loader])
     loaded_config = config.get("db.host")
 

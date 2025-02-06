@@ -1,12 +1,12 @@
-from typing import Dict, Any
+from typing import Any
 from .base_loader import BaseLoader
 
 
-class DictLoader(BaseLoader):
-    def __init__(self, config_dict: Dict[str, Any]):
+class dictLoader(BaseLoader):
+    def __init__(self, config_dict: dict[str, Any]):
         if not isinstance(config_dict, dict):  # type: ignore
-            raise TypeError("DictLoader requires a dictionary")
+            raise TypeError("dictLoader requires a dictionary")
         self.config_dict = config_dict
 
-    def load(self) -> Dict[str, Any]:
+    def load(self) -> dict[str, Any]:
         return self.config_dict

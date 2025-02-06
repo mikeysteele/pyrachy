@@ -1,5 +1,5 @@
 import os
-from typing import Dict, Any
+from typing import Any
 from .base_loader import BaseLoader
 
 
@@ -13,9 +13,9 @@ class EnvLoader(BaseLoader):
         self.prefix = prefix
         self.separator = separator
 
-    def load(self) -> Dict[str, Any]:
+    def load(self) -> dict[str, Any]:
 
-        parsed_env: Dict[str, Any] = {}
+        parsed_env: dict[str, Any] = {}
 
         for key, value in os.environ.items():
             if self.prefix and not key.startswith(self.prefix):
