@@ -14,7 +14,7 @@ This Python package provides a flexible, pluggable configuration system that loa
 The core of the system is the loader class that fetches the configuration from various sources. Each loader implements the BaseLoader class and is responsible for loading the configuration from a specific source.
 
 ### Included Loaders
-* ArgLoader: Loads configuration from command-line arguments.
+* ArgvLoader: Loads configuration from command-line arguments.
 * EnvLoader: Loads configuration from environment variables.
 * FileLoader: Loads configuration from files (YAML, TOML, JSON).
 2. Create the Config Object
@@ -25,7 +25,7 @@ Example
 from pyrachy import Pyrachy, ArgLoader, EnvLoader, FileLoader
 
 # Create the loaders
-arg_loader = ArgLoader(allowed_args=['db-host', 'db-port'], separator='-')
+arg_loader = ArgvLoader(allowed_args=['db-host', 'db-port'], separator='-')
 env_loader = EnvLoader(prefix="MY_APP_", separator='_')
 file_loader = FileLoader(file_paths=['config.yaml'])
 

@@ -1,9 +1,9 @@
-from .loaders import BaseLoader, ArgvLoader, EnvLoader, dictLoader, FileLoader
+from .loaders import BaseLoader, ArgvLoader, EnvLoader, DictLoader, FileLoader
 from .pyrachy import Pyrachy
 
 __all__ = [
     "Pyrachy",
-    "dictLoader",
+    "DictLoader",
     "EnvLoader",
     "ArgvLoader",
     "FileLoader",

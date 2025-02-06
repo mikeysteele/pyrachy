@@ -2,7 +2,7 @@ import pytest
 import sys
 from unittest.mock import patch, mock_open
 
-from pyrachy import Pyrachy, ArgvLoader, dictLoader, EnvLoader, FileLoader
+from pyrachy import Pyrachy, ArgvLoader, DictLoader, EnvLoader, FileLoader
 
 # Test Config class and loaders
 
@@ -31,7 +31,7 @@ def mock_toml_file():
 
 # Test dictLoader
 def test_dict_loader():
-    loader = dictLoader({"db": {"host": "localhost", "port": "5432"}})
+    loader = DictLoader({"db": {"host": "localhost", "port": "5432"}})
     config = Pyrachy([loader])
     loaded_config = config.get()
 
@@ -40,7 +40,7 @@ def test_dict_loader():
 
 # Test dictLoader getting single arg
 def test_dict_loader_with_arg():
-    loader = dictLoader({"db": {"host": "localhost", "port": "5432"}})
+    loader = DictLoader({"db": {"host": "localhost", "port": "5432"}})
     config = Pyrachy([loader])
     loaded_config = config.get("db")
 
